@@ -2671,7 +2671,7 @@ char* call::createSendingMessage(SendingMessage *src, int P_index, char *msg_buf
             dest += snprintf(dest, left, "%s", media_ip);
             break;
         case E_Message_Media_Port: {
-            int port = media_port + comp->offset;
+            int port = media_port + (2 * (number - 1)) % 10000 + comp->offset;
 #ifdef PCAPPLAY
             char *begin = dest;
             while (begin > msg_buffer) {
